@@ -1,0 +1,5 @@
+There's multiple ways to solve this level, but all of the ways we found are using the disassembly features in gdb.
+
+The first way would be to just jump to the instruction that calls ft_des function that create the flag, avoid the check of getuid.
+The second way would be to just print out the result of the direct call to ft_des using the same argument as in the binary.
+

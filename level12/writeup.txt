@@ -1,0 +1,13 @@
+In this level it seems like a web server is running in the background on port 4646, we can access it using the the browser, se we assume that its running on flag12.
+
+It does accept two aguments, y and x as parameters.
+
+after some ananlysis it seems like y will have litte use since the only operation its used in pattern matching that cant be useful since the parameter is evaluated as a string and not a regex, so we will concentrate our efforts on the x parameter.
+
+It's seems like there a replacement regex applied on x that will make the string upercase, then a substitution regex that will remove whatever comes after the first whitespace.
+
+then theres a shell command evaluated then stored in the array output, it seems like that where the vulnerability lands.
+
+so we need to execute a command or something that will get us the flag during that command evaluation.
+
+since everything in $xx is uppercase we cant use regular commands, but by creating a script named VULMN that will run the "getflag > /tmp/flag" and naming it in uppercase we can make it execute our command by passing in argument x=`/*/vulmn` so when the egrep will call the executable and the flag will be set in /tmp/flag

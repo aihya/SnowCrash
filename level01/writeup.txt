@@ -1,0 +1,4 @@
+Step 1: cat /etc/passwd and we'll find user flag01s' encrypted password is revealed.
+Step 2: install John the Ripper to crack the passwordd.
+Step 3: copy the line containing the encrypted password into another file.
+Step 4: run John the Ripper and... Voila! We get the password for flag01.

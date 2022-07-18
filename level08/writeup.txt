@@ -1,0 +1,5 @@
+After analyzing the disassembly code of the binary, we found out there's an if condition checking whether the file name match
+the string "token", which is the name of file token in home (we suppose it contains the flag).
+We cannot use token as a parameter to ~/level08 because the user level08 doesn't have permissions, so we create symlink to token
+with a different name.
+It'll give us the password to user flag08 and we get flag from there.

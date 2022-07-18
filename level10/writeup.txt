@@ -1,0 +1,13 @@
+for this level the first thing we did is try and run the binary, it seemed like the binary needs arguments, a file and a host ip, when we tried to run it with the token, we get "You don't have access to token" so it seems like there a check of some kind on the permission of the file passed.
+
+then we ran it using another file that we the permissions for, upon run we saw that its sending packets to the host passed on the port 6969, so we ran nc -nlk 6969 > Flag.txt to listen on the connection and log the content.
+
+After using `strace ~/level10` we saw function calls to access and open. We looked for vulnerabilities related to those two and found
+a race condition that can happen in between the calls.
+access() function basically checks if the path name passed is accessible to the user calling the executable, using its real uid.
+On the other hand, open() checks for the effective uid which is the case of a SetUID program, the uid of its owner (flag10).
+
+After access() checks the file with the permissions of level10 (some arbitrary file), we need to make sure that before open()
+is called that we swap the file to the target file with the permissions of the user flag10, so we bruteforce it using script.
+
+That gave up password to user flag10, and we ran getflag from there.

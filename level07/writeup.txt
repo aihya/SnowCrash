@@ -1,0 +1,2 @@
+this exercice was pretty straight forward,after runing ltrace on the binary we stumbled upon a call to "getenv("LOGNAME")"
+so we changed the value of LOGNAME to `getflag` as a first attempt and runned the program and it worked thanks to the program being a SUIDprogram

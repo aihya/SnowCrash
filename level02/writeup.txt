@@ -1,0 +1,12 @@
+Step 1: Use cat on the file "level02.pcap"
+            (.pcap files containes packets sent back and forth between hosts).
+Step 2: Install and open Wireshark as it makes it extremely easy to see inside the .pcap file format.
+Step 3: Select the option "Analyse" -> "Follow" -> "TCP stream" and a window pops up
+        containing the packets assembled together.
+        The content format "ASCII" is selected by default and shows a line containing what seems to be the password.
+        If we use it as it is, it won't work.
+Step 4: Use the option "Show data as" and select another format.
+        We choose "Hex Dump" to see the hexadecimal value of each byte,
+        and it looks like whomever was trying to type the password was deleting some of the characters,
+        because we can see the hex value "7F" or DEL character in between the "password".
+Step 5: If we delete the characters right before the DEL characters we end up with the string "ft_waNDReL0L", which is the pas        password to get into flag02.

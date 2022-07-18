@@ -1,0 +1,10 @@
+Step 1: We "cat" the file level04.pl and we find a perl script. There is a comment signifying there's a server running on port 4747.
+        If we open the site nothing shows up.
+Step 2: The script uses a library called CGI (Common Gateway Interface) which serves as a protocol for command execution via web requests.
+        The "param" inside the curly braces contains the key-value pairs passed inside the URL.
+        "x" is a subroutine (function, method... whatever) that take the first argument, execute it inside the command `echo $y 2>&1` and print the result back.
+        And then the subroutine "x" is executed with whatever comes inside "param", if it happens to be the key "x", use it, otherwise... MiSsIoN AboRt.
+Step 3: The owner of the script is "flag04", which means we can try to run the command "getflag" with his previliges.
+        We're clever so we use the "getflag" as value for the key "x" and put in the URL like this localhost:4747?x=getflag and... Fu, nothing.
+        The reason is that "getflag" is treated by "echo" as a string which returns "getflag" back. So if we used backticks like this `getflag`, it'll be evaluated
+        first, then the result will printed back.

@@ -1,0 +1,5 @@
+We have a lua script presumably running on flag11 and its listenning in port 5151 for connections,
+if has an infinite while loop requesting for a password, hashs it and compares the hash to a hard coded
+string. We notices a print funtion that prints "trying " concatenated with the raw password received.
+We passed the command `getflag > /tmp/flag` as a password, so when passed to print function,
+"l" will be evaluated on prompt and it's irrelevant whether the if statement fails or not.

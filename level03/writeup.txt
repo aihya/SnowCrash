@@ -1,0 +1,10 @@
+Step 1: Run strace and ltrace commands on the file "level03" to see the syscalls made.
+        We can see the syscall [system("/usr/bin/env echo Exploit me" <unfinished ...>]
+        If we run the executable with the previliges of the user "level03", we see the string "Exploit me" printed out.
+Step 2: Our end goal is to run the command "getflag" with the previliges of the user "flag03" in order to get the flag.
+        And because the portion "/usr/bin/env echo" uses the command "echo" to show the message "Exploit me",
+        we can create our version of "echo" inside the folder /tmp. Inside of it we put the command "getflag > /tmp/flag".
+        The idea is to force /usr/bin/env to use our own version of "echo" to run the command "getflag" with the previliges
+        of the user "flag03", thus we get the flag.
+Step 3: We need to change the PATH environment variable. We put infront of it the folder /tmp to force the search to start from there.
+Step 4: Run the "level03" -> "/usr/bin/env" now uses our "echo", which run the command "getflag"... and Voila.

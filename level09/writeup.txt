@@ -1,0 +1,5 @@
+In this level we have a binary, and this binary need an argument, we enter random values at first and we notice that it seem to do some kind of encryption (magic).
+On the other hand we have token, a string with a bunch of non readable characters, we assumed that its our password to the flag09, and that its been encrypted using the binary level09.
+To find the encryption algorithm we tried to use strings like "0000000" or "AAAAAAA", to get an idea of what it does, and it seems like its adding the current ascii character value to it position in the string.
+
+So we decided to write a python script to reverse the encryption algorithm and used the token provided as a parameter, what gave us the password to the flag09 and from then we did run getflag.

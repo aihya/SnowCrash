@@ -1,0 +1,7 @@
+Analyzing the level06.php we found out there's a vulnerability in pgrep_replace evaluation modifier "/e" allowing to evaluate
+a function or a variable if there is a match.
+In the x function we can observe there's pattern with evaluation modifier ("/(\[x (.*)\])/e"), and when a match is found,
+the y function (y(\"\\2\")) is called. And because y takes the \2 (the second group match) wrapped around quotes,
+we cannot call php syscalls (system("getflag") or something like that) to be executed.
+So the only thing we can try is to write it this way ${`getflag`} to make php evaluate it as variable and thus throw an error,
+because the variable doesn't exist and we get the flag anyway.

@@ -1,0 +1,8 @@
+Step 1: We find nothing in the home so we run the command "find / -user flag05" to see if there is any file or directory related to the
+        user "flag05".
+        Two files are found, /usr/sbin/openarenaserver and /rofs/usr/sbin/openarenaserver.
+Step 2: "cat" The first file and you see a script with a for loop that execute all files in /opt/openarenaserver with a 5 seconds CPU time
+        limit and removes it. We made the accumption that the file is periodicaly executed.
+Step 3: Create a file in /opt/openarenaserver called "script" and put inside of it the command '`getflag > /tmp/flag'` and then use "chmod
+        +x" to make it executable.
+Step 4: We wait untill the script is executed and we get the flag in /tmp/flag.

@@ -1,0 +1,11 @@
+We didnt find any binary, any file owned by the user level14 so we decided to tackle the problem from the source, by attempting to reverse getflag.
+
+We put getflag in binary ninja a binary analysis tool, we found that its checking on the uid of the user executing the binary and other checks then from that give the output corresponding flag.
+
+There's two ways to tackle this problem, either you straight up copy the string passed to ft_des in the case of the uid corresponding to flag14, then run in gdb a call to the function ft_des by running the command:
+
+p (char *)ft_des("string value").
+
+We could get the address of the string we need to just by reading the assembly, seeing where conditional jump lead us and then getting the string address.
+
+Or we could reset the value the of the register where the return value of each function used for check is stored, pass the security checks, the modify the value of the variable where the uid is stored to be equal to the uid of the flag14 then run it normally.

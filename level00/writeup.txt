@@ -1,0 +1,6 @@
+Step 1: login to level00 with password "level00"
+Step 2: Using the command `find / -user flag00 2>/dev/null` two files are found
+            1. /usr/sbin/john
+            2. /rofs/usr/sbin/john
+Step 3: cat the first file (the second has the same content) and use Rot-15 to decypher (Rot-15 is found by bruteforce)
+Step 4: Use the decyphered string "nottoohardhere" to login to flag00.
